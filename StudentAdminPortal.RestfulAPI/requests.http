@@ -1,0 +1,6 @@
+@baseApiEndpoint = https://localhost:5001/api
+
+# Get all students
+GET {{baseApiEndpoint}}/students
+
+###
