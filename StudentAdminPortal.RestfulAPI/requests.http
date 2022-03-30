@@ -4,3 +4,16 @@
 GET {{baseApiEndpoint}}/students
 
 ###
+GET @{{baseApiEndpoint}}//students/Id
+
+###
+POST {{baseApiEndpoint}}/students
+Content-Type: application/json
+
+{
+
+}
+
+###
+
+

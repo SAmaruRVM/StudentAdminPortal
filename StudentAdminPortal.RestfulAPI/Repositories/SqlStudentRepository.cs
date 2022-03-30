@@ -20,7 +20,7 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
                      .Include(nameof(Student.Gender))
                      .Include(nameof(Student.Addresses))
                      .Where(s => s.Addresses.Any())
-                     .OrderByDescending(s => s.Addresses.Count())
+                     .OrderBy(s => s.Gender.Name)
                      .ThenBy(s => s.FirstName)
                      .ThenBy(s => s.LastName)
                      .ThenBy(s => s.Email)

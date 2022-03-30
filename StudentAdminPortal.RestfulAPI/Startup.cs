@@ -9,7 +9,7 @@ using StudentAdminPortal.RestfulAPI.Repositories;
 
 namespace StudentAdminPortal.RestfulAPI
 {
-    public class Startup
+    public class Startup // Bind<T>()
     {
         public void ConfigureServices(IServiceCollection services)
         {
