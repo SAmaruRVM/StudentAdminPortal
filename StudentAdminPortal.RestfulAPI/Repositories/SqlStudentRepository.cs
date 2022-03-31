@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -27,5 +28,13 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
                      .AsNoTrackingWithIdentityResolution()
                      .AsSplitQuery()
                      .ToListAsync();
+
+        public async Task<Student?> RetrieveByIdAsync(Guid studentId)
+             => await _studentAdminPortalContext
+                      .Students
+                      .AsNoTracking()
+                      .Include(nameof(Student.Gender))
+                      .Include(nameof(Student.Addresses))
+                      .SingleOrDefaultAsync(s => s.Id == studentId);
     }
 }

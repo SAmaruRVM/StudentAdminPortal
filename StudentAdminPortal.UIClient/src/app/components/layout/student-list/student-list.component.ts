@@ -6,13 +6,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { nameof } from 'ts-simple-nameof';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-
+import { routeConstants } from 'src/app/Constants/routes.constants';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
+  routeConstants = routeConstants;
   students: IStudent[] = [];
   studentsTableColumns: string[] = [
     nameof<IStudent>((s) => s.firstName),
@@ -21,6 +22,8 @@ export class StudentListComponent implements OnInit {
     nameof<IStudent>((s) => s.email),
     nameof<IStudent>((s) => s.mobile),
     nameof<IStudent>((s) => s.gender),
+    nameof<IStudent>((s) => s.avatarURL),
+    'action',
   ];
 
   @ViewChild(MatPaginator)

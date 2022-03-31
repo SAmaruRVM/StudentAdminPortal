@@ -9,9 +9,15 @@ import { Observable } from 'rxjs';
 export class StudentsService {
   private apiBaseUrl: string = 'https://localhost:5001/api';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {}
 
   retrieveAllStudents(): Observable<IStudent[]> {
-      return this.httpClient.get<IStudent[]>(`${this.apiBaseUrl}/students`);
+    return this.httpClient.get<IStudent[]>(`${this.apiBaseUrl}/students`);
+  }
+
+  retrieveStudentByTheirId(studentId: string): Observable<IStudent> {
+    return this.httpClient.get<IStudent>(
+      `${this.apiBaseUrl}/students/${studentId}`
+    );
   }
 }

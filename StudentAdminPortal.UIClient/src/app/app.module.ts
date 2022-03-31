@@ -51,9 +51,10 @@ import { FormsModule } from '@angular/forms';
 import { TopNavigationComponent } from './components/layout/top-navigation/top-navigation.component';
 import { StudentListComponent } from './components/layout/student-list/student-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 @NgModule({
-  declarations: [AppComponent, TopNavigationComponent, StudentListComponent],
+  declarations: [AppComponent, TopNavigationComponent, StudentListComponent, StudentDetailsComponent],
   imports: [
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

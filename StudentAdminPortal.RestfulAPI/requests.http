@@ -4,7 +4,7 @@
 GET {{baseApiEndpoint}}/students
 
 ###
-GET @{{baseApiEndpoint}}//students/Id
+GET {{baseApiEndpoint}}/students/aa89e6b1-6ef2-897a-19df-b21af38d2c6a
 
 ###
 POST {{baseApiEndpoint}}/students
