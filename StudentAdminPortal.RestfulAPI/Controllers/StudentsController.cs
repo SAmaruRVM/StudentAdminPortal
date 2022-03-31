@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 using StudentAdminPortal.RestfulAPI.DTOs;
+using StudentAdminPortal.RestfulAPI.Models;
 using StudentAdminPortal.RestfulAPI.Repositories;
 
 namespace StudentAdminPortal.RestfulAPI.Controllers
@@ -41,6 +42,33 @@ namespace StudentAdminPortal.RestfulAPI.Controllers
                 null => NotFound(),
                 _ => Ok(_autoMapper.Map<StudentDTO>(searchedStudent))
             };
+        }
+
+        [HttpPut("{studentId:Guid}")]
+        public async Task<ActionResult> UpdateAsync([FromRoute] Guid studentId, [FromBody] StudentDTO studentDTO)
+        {
+            var searchedStudent = await _studentRepository.RetrieveByIdAsync(studentId);
+            if(searchedStudent is null)
+            {
+                return NotFound();
+            }
+
+            studentDTO.Id = searchedStudent.Id;
+            await _studentRepository.UpdateAsync(_autoMapper.Map<Student>(studentDTO));
+            return NoContent();
+        }
+
+        [HttpDelete("{studentId:Guid}")]
+        public async Task<ActionResult> RemoveAsync([FromRoute] Guid studentId)
+        {
+            var searchedStudent = await _studentRepository.RetrieveByIdAsync(studentId);
+            if (searchedStudent is null)
+            {
+                return NotFound();
+            }
+
+            await _studentRepository.RemoveAsync(studentId);
+            return NoContent();
         }
     }
 }

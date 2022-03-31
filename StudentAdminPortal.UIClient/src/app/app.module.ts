@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Add below imports to the Imports Section on the top of the page
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -56,6 +56,7 @@ import { StudentDetailsComponent } from './components/student-details/student-de
 @NgModule({
   declarations: [AppComponent, TopNavigationComponent, StudentListComponent, StudentDetailsComponent],
   imports: [
+    SweetAlert2Module.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,

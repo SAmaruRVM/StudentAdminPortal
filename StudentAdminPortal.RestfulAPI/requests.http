@@ -1,13 +1,13 @@
 @baseApiEndpoint = https://localhost:5001/api
 
 # Get all students
-GET {{baseApiEndpoint}}/students
+GET {{ baseApiEndpoint }}/students
 
 ###
-GET {{baseApiEndpoint}}/students/aa89e6b1-6ef2-897a-19df-b21af38d2c6a
+GET {{ baseApiEndpoint }}/students/aa89e6b1-6ef2-897a-19df-b21af38d2c6a
 
 ###
-POST {{baseApiEndpoint}}/students
+POST {{ baseApiEndpoint }}/students
 Content-Type: application/json
 
 {
@@ -15,5 +15,25 @@ Content-Type: application/json
 }
 
 ###
+GET {{ baseApiEndpoint }}/genders
 
+###
+PUT {{ baseApiEndpoint }}/students/01b25c2a-adf3-442b-0987-3dad4ca0ed2e
+Content-Type: application/json
+
+{
+    "firstName": "Not César anymore",
+    "lastName": "Mane",
+    "dateOfBirth": "2017-01-07T01:47:27.0407597",
+    "email": "Cristiano500x0567035@hotmail.com",
+    "mobile": "222801161",
+     "gender": {
+      "id": "75b29bf0-3931-48a4-97ba-070d08dc6417"
+    }
+}
+
+### 
+DELETE {{ baseApiEndpoint }}/students/f45c5885-de6c-3407-3985-a012d0ee7f09
+
+###
 

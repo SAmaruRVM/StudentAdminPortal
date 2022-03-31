@@ -10,4 +10,6 @@ public interface IStudentRepository
 {
     Task<IEnumerable<Student>> RetrieveAllAsync();
     Task<Student?> RetrieveByIdAsync(Guid studentId);
+    Task UpdateAsync(Student studentToUpdate);
+    Task RemoveAsync(Guid studentId);
 }

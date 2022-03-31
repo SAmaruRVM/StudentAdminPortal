@@ -15,6 +15,11 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
         public SqlStudentRepository(StudentAdminPortalContext studentAdminPortalContext) 
             => _studentAdminPortalContext = studentAdminPortalContext;
 
+        public async Task RemoveAsync(Guid studentId)
+            => await _studentAdminPortalContext
+                    .Database
+                    .ExecuteSqlInterpolatedAsync($"delete from Students where Id = {studentId}");
+
         public async Task<IEnumerable<Student>> RetrieveAllAsync()
             => await _studentAdminPortalContext
                      .Students
@@ -36,5 +41,11 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
                       .Include(nameof(Student.Gender))
                       .Include(nameof(Student.Addresses))
                       .SingleOrDefaultAsync(s => s.Id == studentId);
+
+        public async Task UpdateAsync(Student studentToUpdate)
+        {
+            _studentAdminPortalContext.Entry(studentToUpdate).State = EntityState.Modified;
+            await _studentAdminPortalContext.SaveChangesAsync();
+        }
     }
 }

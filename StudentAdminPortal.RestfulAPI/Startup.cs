@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 using StudentAdminPortal.RestfulAPI.Context;
+using StudentAdminPortal.RestfulAPI.Profiles;
 using StudentAdminPortal.RestfulAPI.Repositories;
 
 namespace StudentAdminPortal.RestfulAPI
@@ -23,9 +24,10 @@ namespace StudentAdminPortal.RestfulAPI
             services.AddRouting(o => { });
 
 
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(typeof(GeneralProfile).Assembly);
 
             services.AddScoped<IStudentRepository, SqlStudentRepository>();
+            services.AddScoped<IGenderRepository, SqlGenderRepository>();
         }
 
         public void Configure(IApplicationBuilder app)
