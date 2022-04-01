@@ -12,4 +12,5 @@ public interface IStudentRepository
     Task<Student?> RetrieveByIdAsync(Guid studentId);
     Task UpdateAsync(Student studentToUpdate);
     Task RemoveAsync(Guid studentId);
+    Task<Student> InsertAsync(Student studentToInsert);
 }

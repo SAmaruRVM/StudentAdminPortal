@@ -15,6 +15,14 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
         public SqlStudentRepository(StudentAdminPortalContext studentAdminPortalContext) 
             => _studentAdminPortalContext = studentAdminPortalContext;
 
+        public async Task<Student> InsertAsync(Student studentToInsert)
+        {
+            studentToInsert.Gender = null;
+            _studentAdminPortalContext.Students.Add(studentToInsert);   
+            await _studentAdminPortalContext.SaveChangesAsync();
+            return studentToInsert;
+        }
+
         public async Task RemoveAsync(Guid studentId)
             => await _studentAdminPortalContext
                     .Database
@@ -25,7 +33,6 @@ namespace StudentAdminPortal.RestfulAPI.Repositories
                      .Students
                      .Include(nameof(Student.Gender))
                      .Include(nameof(Student.Addresses))
-                     .Where(s => s.Addresses.Any())
                      .OrderBy(s => s.Gender.Name)
                      .ThenBy(s => s.FirstName)
                      .ThenBy(s => s.LastName)

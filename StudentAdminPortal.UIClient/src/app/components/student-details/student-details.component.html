@@ -14,7 +14,7 @@
         <mat-icon>chevron_left</mat-icon>
         Go back!
       </a>
-      <button [swal]="{ title: 'Do you really wish to delete ' + student.firstName + ' ' + student.lastName + '?', showCancelButton: true }" (confirm)="deleteStudent()" (dismiss)="toastr.info('You dismissed the deletion of this student')" mat-raised-button color="accent" style="margin-left: 10px; padding: 5px">
+      <button type="button" [swal]="{ title: 'Do you really wish to delete ' + student.firstName + ' ' + student.lastName + '?', showCancelButton: true }" (confirm)="deleteStudent()" (dismiss)="toastr.info('You dismissed the deletion of this student')" mat-raised-button color="accent" style="margin-left: 10px; padding: 5px">
         Delete!
       </button>
     </div>
@@ -123,7 +123,7 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button type="submit" mat-raised-button color="primary"> Update details</button>
+            <button type="submit" mat-raised-button color="primary">Update details</button>
           </div>
         </div>
       </form>

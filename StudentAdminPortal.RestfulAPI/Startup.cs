@@ -1,5 +1,7 @@
 
+using System;
 using System.Reflection;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,18 +12,19 @@ using StudentAdminPortal.RestfulAPI.Repositories;
 
 namespace StudentAdminPortal.RestfulAPI
 {
-    public class Startup // Bind<T>()
+    public class Startup // Bind<T>() IOptions<T>
     {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(op =>
             {
-                op.SuppressAsyncSuffixInActionNames = true;
+                op.SuppressAsyncSuffixInActionNames = false;
             });
             services.AddDbContext<StudentAdminPortalContext>();
 
             services.AddCors(c => c.AddDefaultPolicy(p => p.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()));
             services.AddRouting(o => { });
+
 
 
             services.AddAutoMapper(typeof(GeneralProfile).Assembly);

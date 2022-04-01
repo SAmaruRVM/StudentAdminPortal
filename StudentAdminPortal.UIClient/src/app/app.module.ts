@@ -52,10 +52,12 @@ import { TopNavigationComponent } from './components/layout/top-navigation/top-n
 import { StudentListComponent } from './components/layout/student-list/student-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [AppComponent, TopNavigationComponent, StudentListComponent, StudentDetailsComponent],
   imports: [
+    HotToastModule.forRoot(),
     SweetAlert2Module.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
@@ -100,6 +102,7 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    HotToastModule.forRoot(),
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

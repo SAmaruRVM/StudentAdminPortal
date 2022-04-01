@@ -4,21 +4,31 @@
 GET {{ baseApiEndpoint }}/students
 
 ###
-GET {{ baseApiEndpoint }}/students/aa89e6b1-6ef2-897a-19df-b21af38d2c6a
+GET {{ baseApiEndpoint }}/students/eafd9639-ea8c-41ba-8f40-9bddb6a2d1eb
 
 ###
 POST {{ baseApiEndpoint }}/students
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-
+   "firstName": "Joao",
+   "lastName": "Mane",
+   "dateOfBirth": "2006-06-23",
+   "email": "joaopedromane23@gmail.com",
+   "mobile": "967248025",
+   "avatarURL": "https://robohash.org/JoaoMane",
+   "gender": {
+     "id": "33ea5b86-cf03-44e9-8882-1da2f7b262a6"
+   }
 }
+
+
 
 ###
 GET {{ baseApiEndpoint }}/genders
 
 ###
-PUT {{ baseApiEndpoint }}/students/01b25c2a-adf3-442b-0987-3dad4ca0ed2e
+PUT {{ baseApiEndpoint }}/students/a8ee04d3-07e9-4ef8-89ed-89bbb4876261
 Content-Type: application/json
 
 {

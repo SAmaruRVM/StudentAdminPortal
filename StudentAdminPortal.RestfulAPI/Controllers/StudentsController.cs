@@ -70,5 +70,14 @@ namespace StudentAdminPortal.RestfulAPI.Controllers
             await _studentRepository.RemoveAsync(studentId);
             return NoContent();
         }
+
+        [HttpPost]
+        public async Task<ActionResult<StudentDTO>> InsertAsync([FromBody] StudentDTO studentDTO) 
+        {
+            var student = await _studentRepository.InsertAsync(_autoMapper.Map<Student>(studentDTO));
+            student.GenderId = studentDTO.Gender.Id;
+
+            return CreatedAtAction(nameof(RetrieveByIdAsync), new { studentId = student.Id }, _autoMapper.Map<StudentDTO>(student));
+        }
     }
 }

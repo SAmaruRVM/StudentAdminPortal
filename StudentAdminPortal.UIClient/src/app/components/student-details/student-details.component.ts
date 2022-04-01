@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { IStudent } from 'src/app/models/student.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IGender } from 'src/app/models/gender.model';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-student-details',
@@ -20,7 +21,8 @@ export class StudentDetailsComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly genderService: GendersService,
     private readonly router: Router,
-    public readonly toastr: ToastrService
+    private readonly hotToastService: HotToastService,
+    public readonly toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -73,15 +75,24 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   deleteStudent(): void {
-     this.studentService.deleteStudentByTheirId(
-       this.student.id
-     )
-     .subscribe((success) => {
-      this.toastr.success('Student was deleted successfully');
-      this.router.navigate(['students']);
-
-     }, (_) => {
-       this.toastr.error('For some reason, we could not delete this specific student');
-     })
+     this.studentService
+       .deleteStudentByTheirId(this.student.id)
+       .pipe(
+         this.hotToastService.observe({
+           loading: 'Please while we deleted this student...',
+           success: (s) => 'Student was succesfully deleted!',
+           error: (e) => 'Something did not work, reason: ' + e,
+         })
+       )
+       .subscribe(
+         (success) => {
+           this.router.navigate(['students']);
+         },
+         (_) => {
+           this.toastr.error(
+             'For some reason, we could not delete this specific student'
+           );
+         }
+       );
   }
 }
